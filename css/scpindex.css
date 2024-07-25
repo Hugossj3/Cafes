@@ -21,7 +21,8 @@ nav{
     background-color: var(--primario);
     height: 3rem;
     position: sticky;
-    top:0
+    top:0;
+    z-index: 5;
 }
 nav a{
     width: 1fr;
@@ -34,6 +35,20 @@ header{
     background-repeat: no-repeat;
     background-size: cover;
     
+}
+@keyframes fade-in-down{
+    from{
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+    to{
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+h1{
+    animation-name: fade-in-down;
+    animation-duration: 3s;
 }
 .salto{
     text-align: center;
@@ -64,12 +79,30 @@ header{
     justify-content: space-around;
     flex-wrap: wrap;
 }
+@keyframes slide-in-up{
+    from{
+        transform: translate3d(0, 0%, 0);
+        visibility: visible;
+    }
+    to{
+        transform: translate3d(0, -20%, 0);
+    }
+}
 .carta{
     width: 300px;
     background-color: var(--blanco);
     border-radius: 10px;
     margin: 10px;
     color: var(--primario);
+}
+.carta:hover{
+    animation-name: slide-in-up;
+    animation-duration: 3s;
+    animation-composition: replace;
+}
+.carta h3{
+    text-align: left;
+    padding-left: 10px;
 }
 .carta img{
     width: 100%;
@@ -88,7 +121,27 @@ input,textarea{
     border-radius: 5px;
     margin: 5px 0 5px 0;
 }
+@media (max-width:480px){
+    input,textarea{
+        width: 100%;
+        height: 30px;
+    }
+    .carta{
+        margin: 40px 0 40px 0px;
+
+    }
+}
 #envio{
     background-color: var(--primario);
     color: var(--blanco);
+}
+footer{
+    background-color: var(--primario);
+    color: rgb(255, 236, 210);
+    padding: 10px;
+    line-height: 2em;
+}
+.iconos{
+    display: flex;
+    justify-content: space-evenly;
 }
